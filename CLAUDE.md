@@ -82,7 +82,12 @@ scripts/gerar-icones.mjs   # gera os ícones de public/ a partir do logo
 - Todo CTA leva ao WhatsApp `554137978070` com **mensagem pré-preenchida por origem** (ex.: `Olá! Vim pelo site e quero saber sobre transferência.`).
 - Botão flutuante de WhatsApp no mobile.
 
-**Deploy:** build estático (`dist/`). Hospedagem a definir: Cloudflare Pages ou o servidor da Kingdom Tech via Cloudflare Tunnel, como o sistema em `../Despachante`.
+**Deploy: GitHub Pages via GitHub Actions** (`.github/workflows/deploy.yml`). A cada push no `main`, o GitHub roda `npm ci && npm run build` e publica o `dist/`. Ninguém faz build nem commita `dist/` à mão.
+- Configuração única no GitHub: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+- O workflow passa `SITE_URL` e `BASE_PATH` (vindos do `actions/configure-pages`) para o `astro.config.mjs`. Sem domínio próprio, o site fica em `https://<usuario>.github.io/<repositorio>/`, com todos os caminhos prefixados. Com domínio próprio, a base vira `/` automaticamente.
+- **Regra:** arquivos de `public/` referenciados no código precisam passar pelo `BASE_URL` (ver `withBase()` em `Layout.astro`). Nunca escreva `href="/arquivo"` fixo. Âncoras (`#secao`) e imagens importadas via `astro:assets` já funcionam.
+- `robots.txt` é gerado em `src/pages/robots.txt.ts`, para o sitemap sempre apontar para a URL real.
+- **Domínio `despachanteteixeira.com.br`:** em Settings → Pages → Custom domain, informar o domínio e configurar o DNS conforme a documentação do GitHub Pages (registros A/AAAA para o apex, ou CNAME para `www`).
 
 ## Dados oficiais do cliente
 
