@@ -1,6 +1,6 @@
 # Despachante Teixeira — Site institucional
 
-Projeto do site do **Despachante Teixeira**, despachante de documentação veicular em **Fazenda Rio Grande/PR** (Região Metropolitana de Curitiba).
+Pro jeto do site do **Despachante Teixeira**, despachante de documentação veicular em **Fazenda Rio Grande/PR** (Região Metropolitana de Curitiba).
 
 > **Antes de escrever qualquer texto, página, componente visual ou copy, leia [rules.md](rules.md).** Ele define o que a marca significa, como ela fala e como ela se apresenta. Nada no site deve contradizê-lo.
 
