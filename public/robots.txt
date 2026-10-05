@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://despachanteteixeira.com.br/sitemap-index.xml
