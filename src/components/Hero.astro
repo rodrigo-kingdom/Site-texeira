@@ -1,0 +1,110 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo-teixeira.png';
+import Icon from './Icon.astro';
+import { waLink } from '../data/site';
+
+const provas = ['+10 anos de experiência', 'Até 18x no cartão', 'Atendimento a domicílio'];
+const checklist = [
+  'Documentação conferida',
+  'Débitos parcelados em até 18x',
+  'Processo acompanhado no Detran-PR',
+  'Documento liberado, sem fila',
+];
+---
+
+<section id="topo" class="relative isolate overflow-hidden bg-navy-900 text-white">
+  <!-- brilho dourado e textura sutil, só CSS -->
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(60rem_30rem_at_85%_10%,rgb(196_154_62/0.16),transparent_60%),radial-gradient(40rem_30rem_at_0%_100%,rgb(36_53_125/0.7),transparent_70%)]"
+  >
+  </div>
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute inset-0 -z-10 opacity-[0.07] [background-image:linear-gradient(rgb(255_255_255/0.6)_1px,transparent_1px),linear-gradient(90deg,rgb(255_255_255/0.6)_1px,transparent_1px)] [background-size:56px_56px] [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]"
+  >
+  </div>
+
+  <div class="mx-auto grid max-w-6xl items-center gap-14 px-4 pt-14 pb-20 sm:px-6 lg:grid-cols-[1.15fr_1fr] lg:gap-10 lg:pt-20 lg:pb-28">
+    <div>
+      <p class="eyebrow fade-up text-gold-300">Despachante em Fazenda Rio Grande</p>
+
+      <h1
+        class="fade-up mt-6 font-serif text-[2.6rem] leading-[1.08] font-semibold tracking-tight text-balance sm:text-6xl lg:text-[4.1rem]"
+        style="--delay: 80ms"
+      >
+        Chega de burocracia. Deixe a <em class="font-medium text-gold-400">papelada</em> com a gente.
+      </h1>
+
+      <p class="fade-up mt-6 max-w-xl text-lg leading-relaxed text-white/75" style="--delay: 160ms">
+        Transferência, licenciamento, IPVA e toda a documentação do seu veículo resolvida com agilidade, segurança e
+        parcelamento em até 18x.
+      </p>
+
+      <div class="fade-up mt-9 flex flex-col gap-3 sm:flex-row" style="--delay: 240ms">
+        <a href={waLink('Olá! Vim pelo site e quero um orçamento.')} class="btn-gold" target="_blank" rel="noopener">
+          <Icon name="whatsapp" class="size-5" />
+          Pedir orçamento no WhatsApp
+        </a>
+        <a href="#servicos" class="btn-outline-light">
+          Ver serviços
+          <Icon name="arrow" class="size-4" />
+        </a>
+      </div>
+
+      <ul class="fade-up mt-10 flex flex-wrap gap-x-6 gap-y-3 text-sm text-white/80" style="--delay: 320ms">
+        {
+          provas.map((p) => (
+            <li class="flex items-center gap-2">
+              <Icon name="check" class="size-4 text-gold-400" strokeWidth={2.4} />
+              {p}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <!-- Composição visual: brasão + cartão de processo -->
+    <div class="fade-up relative mx-auto w-full max-w-sm lg:max-w-md" style="--delay: 200ms" aria-hidden="true">
+      <div class="absolute -inset-6 -z-10 rounded-[2.5rem] bg-gradient-to-br from-gold-500/25 via-transparent to-transparent blur-2xl"></div>
+
+      <div class="relative rounded-[1.75rem] border border-gold-500/30 bg-gradient-to-b from-navy-800 to-navy-950 p-7 shadow-2xl shadow-black/40 sm:p-8">
+        <div class="flex items-center gap-4">
+          <Image src={logo} densities={[1, 2]} alt="" width={72} height={72} class="size-16 rounded-full ring-1 ring-gold-500/50 sm:size-[4.5rem]" loading="eager" />
+          <div>
+            <p class="font-serif text-xl font-semibold">Seu processo</p>
+            <p class="text-sm text-white/60">cuidado do início ao fim</p>
+          </div>
+        </div>
+
+        <div class="my-6 flex items-center gap-3 text-gold-500/70">
+          <span class="h-px flex-1 bg-gradient-to-r from-transparent to-gold-500/60"></span>
+          <span class="size-1.5 rotate-45 bg-gold-500"></span>
+          <span class="h-px flex-1 bg-gradient-to-l from-transparent to-gold-500/60"></span>
+        </div>
+
+        <ul class="space-y-4">
+          {
+            checklist.map((item) => (
+              <li class="flex items-center gap-3 rounded-xl bg-white/[0.04] px-4 py-3 text-[0.95rem] text-white/90 ring-1 ring-white/5">
+                <span class="grid size-7 shrink-0 place-items-center rounded-full bg-gold-500 text-navy-950">
+                  <Icon name="check" class="size-4" strokeWidth={2.6} />
+                </span>
+                {item}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div class="absolute -bottom-6 -left-8 hidden items-center sm:flex gap-3 rounded-2xl bg-paper px-4 py-3 text-navy-900 shadow-xl sm:-left-8">
+        <Icon name="card" class="size-7 text-gold-700" />
+        <div class="leading-tight">
+          <p class="font-serif text-lg font-bold">Até 18x</p>
+          <p class="text-xs text-muted">no cartão de crédito</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

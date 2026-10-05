@@ -1,0 +1,39 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo-teixeira.png';
+import Icon from './Icon.astro';
+import { site } from '../data/site';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-navy-950 text-white/70">
+  <div class="mx-auto max-w-6xl px-4 py-14 sm:px-6">
+    <div class="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
+      <div class="flex items-center gap-4">
+        <Image src={logo} densities={[1, 2]} alt="Brasão do Despachante Teixeira" width={64} height={64} class="size-16 rounded-full" />
+        <div>
+          <p class="font-serif text-xl font-semibold text-white">Despachante Teixeira</p>
+          <p class="mt-1 text-sm">Chega de burocracia. Deixe a papelada com a gente.</p>
+        </div>
+      </div>
+
+      <div class="flex gap-3">
+        <a href={site.instagram} target="_blank" rel="noopener" aria-label="Instagram" class="grid size-11 place-items-center rounded-full border border-white/15 transition hover:border-gold-400 hover:text-gold-300">
+          <Icon name="instagram" class="size-5" />
+        </a>
+        <a href={site.facebook} target="_blank" rel="noopener" aria-label="Facebook" class="grid size-11 place-items-center rounded-full border border-white/15 transition hover:border-gold-400 hover:text-gold-300">
+          <Icon name="facebook" class="size-5" />
+        </a>
+      </div>
+    </div>
+
+    <div class="mt-10 flex flex-col gap-2 border-t border-white/10 pt-8 text-xs leading-relaxed sm:flex-row sm:justify-between">
+      <p>
+        {site.legalName} · CNPJ {site.cnpj}<br />
+        {site.address.street} - {site.address.district}, {site.address.city}/{site.address.state} · CEP {site.address.zip}
+      </p>
+      <p class="sm:text-right">© {year} {site.name}. Todos os direitos reservados.</p>
+    </div>
+  </div>
+</footer>

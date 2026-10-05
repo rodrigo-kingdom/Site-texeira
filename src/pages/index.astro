@@ -1,0 +1,31 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Diferenciais from '../components/Diferenciais.astro';
+import Servicos from '../components/Servicos.astro';
+import ComoFunciona from '../components/ComoFunciona.astro';
+import Lojistas from '../components/Lojistas.astro';
+import Faq from '../components/Faq.astro';
+import Contato from '../components/Contato.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppFab from '../components/WhatsAppFab.astro';
+---
+
+<Layout
+  title="Despachante em Fazenda Rio Grande | Despachante Teixeira"
+  description="Transferência, licenciamento, IPVA e toda a documentação do seu veículo em Fazenda Rio Grande/PR. +10 anos de experiência, parcelamento em até 18x e atendimento a domicílio."
+>
+  <Header />
+  <main id="conteudo">
+    <Hero />
+    <Diferenciais />
+    <Servicos />
+    <ComoFunciona />
+    <Lojistas />
+    <Faq />
+    <Contato />
+  </main>
+  <Footer />
+  <WhatsAppFab />
+</Layout>

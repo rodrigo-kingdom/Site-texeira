@@ -1,0 +1,42 @@
+---
+import Icon from './Icon.astro';
+import SectionHeading from './SectionHeading.astro';
+import { passos } from '../data/content';
+import { waLink } from '../data/site';
+---
+
+<section id="como-funciona" class="border-y border-line bg-white py-24 sm:py-28">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
+    <SectionHeading
+      eyebrow="Como funciona"
+      title="Simples do começo ao fim"
+      lead="Quatro passos e o seu documento está resolvido, sem fila e sem dor de cabeça."
+    />
+
+    <ol class="mt-14 grid gap-8 sm:mt-16 sm:gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+      {
+        passos.map((p, i) => (
+          <li class="reveal relative flex gap-5 sm:block">
+            {i < passos.length - 1 && (
+              <span aria-hidden="true" class="absolute top-7 left-16 hidden h-px w-[calc(100%-4rem)] bg-gradient-to-r from-gold-500/70 to-gold-500/0 lg:block" />
+            )}
+            <span class="grid size-12 shrink-0 place-items-center rounded-full sm:size-14 border border-gold-500/50 bg-paper font-serif text-2xl font-semibold text-navy-900">
+              {i + 1}
+            </span>
+            <div>
+              <h3 class="pt-2.5 font-serif text-xl font-semibold text-navy-900 sm:mt-5 sm:pt-0">{p.title}</h3>
+              <p class="mt-1.5 leading-relaxed text-muted sm:mt-2">{p.text}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+
+    <div class="reveal mt-14 text-center">
+      <a href={waLink('Olá! Vim pelo site e quero começar meu atendimento.')} target="_blank" rel="noopener" class="btn-gold">
+        <Icon name="whatsapp" class="size-5" />
+        Começar agora pelo WhatsApp
+      </a>
+    </div>
+  </div>
+</section>

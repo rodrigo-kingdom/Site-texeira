@@ -1,0 +1,49 @@
+---
+import Icon from './Icon.astro';
+import SectionHeading from './SectionHeading.astro';
+import { lojistas } from '../data/content';
+import { waLink } from '../data/site';
+---
+
+<section id="lojistas" class="relative isolate overflow-hidden bg-navy-900 py-24 text-white sm:py-28">
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(50rem_28rem_at_100%_100%,rgb(196_154_62/0.14),transparent_60%)]"
+  >
+  </div>
+
+  <div class="mx-auto grid max-w-6xl gap-14 px-4 sm:px-6 lg:grid-cols-[1fr_1.2fr] lg:items-center">
+    <div>
+      <SectionHeading
+        tone="dark"
+        align="left"
+        eyebrow="Para lojistas e revendas"
+        title="Documentação ágil para suas vendas não pararem"
+        lead="Sua loja vende, a gente cuida da papelada. Processo organizado, acompanhamento de cada veículo e um canal direto com quem resolve."
+      />
+      <a
+        href={waLink('Olá! Vim pelo site, tenho uma loja/revenda de veículos e quero ser parceiro.')}
+        target="_blank"
+        rel="noopener"
+        class="btn-gold reveal mt-9"
+      >
+        <Icon name="whatsapp" class="size-5" />
+        Quero ser parceiro
+      </a>
+    </div>
+
+    <ul class="grid gap-4 sm:grid-cols-2">
+      {
+        lojistas.map((l) => (
+          <li class="reveal flex gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-5 transition sm:block sm:p-6 hover:border-gold-500/40 hover:bg-white/[0.06]">
+            <Icon name={l.icon} class="size-7 shrink-0 text-gold-400" />
+            <div>
+              <h3 class="font-serif text-lg font-semibold sm:mt-4">{l.title}</h3>
+              <p class="mt-1 text-[0.95rem] leading-relaxed text-white/65 sm:mt-1.5">{l.text}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,46 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo-teixeira.png';
+import Icon from './Icon.astro';
+import { waLink } from '../data/site';
+
+const links = [
+  { href: '#servicos', label: 'Serviços' },
+  { href: '#como-funciona', label: 'Como funciona' },
+  { href: '#lojistas', label: 'Lojistas' },
+  { href: '#duvidas', label: 'Dúvidas' },
+  { href: '#contato', label: 'Contato' },
+];
+---
+
+<header class="sticky top-0 z-50 border-b border-white/10 bg-navy-900">
+  <div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4 sm:px-6 lg:h-[4.5rem]">
+    <a href="#topo" class="flex min-w-0 items-center gap-2.5 sm:gap-3">
+      <Image src={logo} densities={[1, 2]} alt="" width={44} height={44} class="size-10 shrink-0 lg:size-11" loading="eager" />
+      <span class="min-w-0 leading-tight whitespace-nowrap">
+        <span class="block font-serif text-base font-semibold text-white sm:text-lg">Despachante Teixeira</span>
+        <span class="block text-[0.62rem] tracking-[0.14em] text-gold-300 uppercase sm:text-[0.7rem] sm:tracking-[0.18em]">Fazenda Rio Grande · PR</span>
+      </span>
+    </a>
+
+    <nav aria-label="Principal" class="hidden lg:block">
+      <ul class="flex items-center gap-8 text-sm font-medium text-white/80">
+        {
+          links.map((l) => (
+            <li>
+              <a href={l.href} class="transition hover:text-gold-300">
+                {l.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <a href={waLink('Olá! Vim pelo site e gostaria de um atendimento.')} class="btn-gold shrink-0 px-3.5 py-2.5 text-sm sm:px-5" rel="noopener" target="_blank">
+      <Icon name="whatsapp" class="size-4" />
+      <span class="hidden sm:inline">Fale no</span>
+      WhatsApp
+    </a>
+  </div>
+</header>

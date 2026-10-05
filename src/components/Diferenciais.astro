@@ -1,0 +1,21 @@
+---
+import Icon from './Icon.astro';
+import { diferenciais } from '../data/content';
+---
+
+<section aria-labelledby="diferenciais-titulo" class="relative z-10 -mt-10 px-4 sm:px-6">
+  <h2 id="diferenciais-titulo" class="sr-only">Por que escolher o Despachante Teixeira</h2>
+  <ul class="reveal mx-auto grid max-w-6xl gap-px overflow-hidden rounded-3xl bg-line shadow-[0_24px_60px_-30px_rgb(16_28_80/0.35)] sm:grid-cols-2 lg:grid-cols-4">
+    {
+      diferenciais.map((d) => (
+        <li class="flex gap-4 bg-white p-5 sm:block sm:p-7">
+          <Icon name={d.icon} class="size-8 shrink-0 text-gold-600" />
+          <div>
+            <h3 class="font-serif text-lg font-semibold text-navy-900 sm:mt-4">{d.title}</h3>
+            <p class="mt-1 text-[0.95rem] leading-relaxed text-muted sm:mt-1.5">{d.text}</p>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+</section>

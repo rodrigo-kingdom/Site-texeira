@@ -1,0 +1,33 @@
+---
+import { brandIcons, lineIcons, type IconName } from '../data/icons';
+
+interface Props {
+  name: IconName;
+  class?: string;
+  strokeWidth?: number;
+}
+
+const { name, class: className = 'size-6', strokeWidth = 1.6 } = Astro.props;
+const isBrand = name in brandIcons;
+const body = isBrand
+  ? brandIcons[name as keyof typeof brandIcons]
+  : lineIcons[name as keyof typeof lineIcons];
+---
+
+{
+  isBrand ? (
+    <svg class={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" set:html={body} />
+  ) : (
+    <svg
+      class={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width={strokeWidth}
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+      set:html={body}
+    />
+  )
+}
